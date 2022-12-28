@@ -2,19 +2,14 @@ package parallel;
 
 import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
-
 import app.Constants;
 import app.Setup;
-import io.cucumber.java.After;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+
 
 public class Login {
 	
@@ -46,6 +41,7 @@ public class Login {
 		if(wd!=null)
 		Thread.sleep(1000);
 		System.out.println("B: "+wd.getCurrentUrl());
+		
 	}
 	
 	@Then("I can see the main page of the system")

@@ -1,18 +1,19 @@
 package app;
 
+import java.util.Arrays;
+
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class Reporting implements ITestListener{
 
 	ExtentReports report;
-	ExtentTest test;
+	static ExtentTest test;
 	
 	public void onStart(ITestContext context) {
 		 
@@ -25,24 +26,22 @@ public class Reporting implements ITestListener{
 	}	
 	
 	public void onTestStart(ITestResult result) {
-		
-		String t = result.getName();
+		String t = result.getMethod().getMethodName();
 		test = report.createTest(t).assignAuthor("Me").assignCategory(Constants.tags);
 	}
 	
 	public void onTestSuccess(ITestResult result) {
-		
-		test.pass(result.getName()+" > is passed ");
+		String paramName = Arrays.asList(result.getParameters()).toString();
+		test.pass(paramName + " > is passed ");
 	}
 
 	
 	public void onTestFailure(ITestResult result) {
-		test.fail(result.getName()+" > is failed ");
-		test.log(Status.FAIL, "Info related to failure");
-		test.warning("Custom warning");
+		test.fail(result.getThrowable()+" > is failed ");
 	}
 	
 	public void onFinish(ITestContext context) {
 		report.flush();
 	}
+
 }

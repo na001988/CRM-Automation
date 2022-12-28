@@ -23,6 +23,7 @@ public class Setup {
 	protected WebDriver driver;
 	protected WebElement label;
 	public LocatorType locator;
+	public long v_hilo = Thread.currentThread().getId();
 
 	public Setup(WebDriver driver) {
 		this.driver = driver;
@@ -31,7 +32,7 @@ public class Setup {
 	public WebDriver run(String brw) throws InterruptedException, MalformedURLException {
 		try {
 			if (brw.equals("chrome")) {
-				System.out.println("Start WebDriver : "+brw+"|"+ Thread.currentThread().getId());
+				System.out.println("Start WebDriver : "+brw+"|"+ v_hilo);
 				ChromeOptions c = new ChromeOptions();
 				c.setHeadless(Constants.is_headless);
 				URL uri = new URL(Constants.hub);
@@ -145,5 +146,5 @@ public class Setup {
 	private WebElement findByLinkText(String x, LocatorType l) throws InterruptedException {
 		return label = locateWebElement(driver, l, x);
 	}
-
+	
 }

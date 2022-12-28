@@ -13,76 +13,44 @@ import pages.Dates;
 @Listeners(Reporting.class)
 public class Grid_Runner {
 	
-	WebDriver driver_1;
-    WebDriver driver_2;
+	WebDriver driver;
     
   @BeforeClass(groups="start")
    public void run1() throws InterruptedException, MalformedURLException{
 	  
-	  Setup ob1 = new Setup(driver_1);
-	  Setup ob2 = new Setup(driver_2);
-	  //driver_1 = ob1.run(Constants.browser_f);
-	  driver_2 = ob2.run(Constants.browser_c);
+	  Setup ob1 = new Setup(driver);
+	  driver = ob1.run(Constants.browser_c);
   }
   
   @AfterClass(groups="end")
   public void close() throws InterruptedException{
 	  try {
-		  if(driver_1 != null) driver_1.quit(); System.out.println("Close driver "+driver_1.toString());
+		  if(driver != null) driver.quit(); System.out.println("Close driver "+driver.toString());
 		  
 	  }catch(Exception e) {
 			System.out.println("On-Close-1 > Error: "+e);
 		}
-	  
-	  try {
-		  
-		  if(driver_2 != null) driver_2.quit(); System.out.println("Close driver "+driver_2.toString());
-	  }catch(Exception e) {
-			System.out.println("On-Close-2 > Error: "+e);
-		}
   }
   
   
-  @Test(groups="chrome")
-  public void launch_chrome() throws InterruptedException {
+  @Test(groups=""+Constants.browser_c+"")
+  public void launch_test() throws InterruptedException {
 	  //passing WebDriver instance to call and execute methods
-	  Dates d = new Dates(driver_2);
+	  Dates d = new Dates(driver);
 	  
 	  try {
-		  if(driver_2==null) {
-			System.out.println("driver is null for : chrome"); 
+		  if(driver==null) {
+			System.out.println("driver is null for : "+Constants.base_uri); 
 		  }
 		  
-	  System.out.println("Web Browser "+driver_2.toString()+ " started...." + Thread.currentThread().getId());
-	  driver_2.get(Constants.base_uri);
+	  System.out.println("Web Browser "+driver.toString()+ " started...." + Thread.currentThread().getId());
+	  driver.get(Constants.base_uri);
 	  Thread.sleep(Constants.delay);
 	  //d.run_page_1();
-	  System.out.println(driver_2.getTitle());
+	  System.out.println(driver.getTitle());
 	  }catch(Exception e) {
-		  System.out.println("Warning...... while launching: "+driver_2.toString()+" | "+e.getMessage());
+		  System.out.println("Warning...... while launching: "+driver.toString()+" | "+e.getMessage());
 	  }
-	  
   }
-  
-  @Test(groups="firefox")
-  public void launch_Firefox() throws InterruptedException {
-	//passing WebDriver instance to call and execute methods
-	  Dates d = new Dates(driver_1);
-	  
-	  try {
-		  if(driver_1==null) {
-			System.out.println("driver is null for : firefox"); 
-		  }
-		  System.out.println("Web Browser "+driver_1.toString()+ " started...." + Thread.currentThread().getId());
-	  driver_1.get(Constants.base_uri);
-	  Thread.sleep(Constants.delay+500);
-	  //d.run_page_1();
-	  System.out.println(driver_1.getTitle());
-	  }catch(Exception e) {
-		  System.out.println("Warning...... while launching: "+driver_1.toString()+" | "+e.getMessage());
-	  }
-	  
-  }
-
   
 }

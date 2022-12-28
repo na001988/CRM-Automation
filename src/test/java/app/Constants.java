@@ -4,7 +4,7 @@ public class Constants {
 	
 	public static int delay = 2000;
 	public static boolean is_headless = true;
-	public static final String browser_c = "chrome";
+	public static final String browser_c = "firefox";
 	public static final String base_uri="https://demo.1crmcloud.com/login.php";
 	public static String user = "admin";
 	public static String pass = "admin";
