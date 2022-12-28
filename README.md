@@ -14,3 +14,6 @@ java -jar -Dwebdriver.chrome.driver="chromedriver.exe" selenium-server-standalon
 > cucumber reports on folder /target/Spark.html
 > run grid  with testng class [Grid_Runner.java] with testng.xml
 > reports for testing /MyCustomExtent.html 
+
+
+##check run cucumber testng parallel, is not working testng_cucumber.xml

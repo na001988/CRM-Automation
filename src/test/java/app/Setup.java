@@ -1,5 +1,6 @@
 package app;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.openqa.selenium.By;
@@ -14,47 +15,46 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.SessionId;
 import org.openqa.selenium.support.ui.Select;
-
 
 public class Setup {
 
 	protected WebDriver driver;
 	protected WebElement label;
 	public LocatorType locator;
-	Constants co = new Constants();  
 
 	public Setup(WebDriver driver) {
 		this.driver = driver;
 	}
 
-	public WebDriver run(String val, String brw) throws InterruptedException {
-		if (brw.equals(co.browser_c)) {
-			try {
-				System.out.println("@@@@ Set-up browser <" + brw + "> for automation");
+	public WebDriver run(String brw) throws InterruptedException, MalformedURLException {
+		try {
+			if (brw.equals("chrome")) {
+				System.out.println("Start WebDriver : "+brw+"|"+ Thread.currentThread().getId());
 				ChromeOptions c = new ChromeOptions();
-				c.setCapability(CapabilityType.BROWSER_NAME, brw);
-				c.setHeadless(co.is_headless);
-				URL uri = new URL(co.hub);
+				c.setHeadless(Constants.is_headless);
+				URL uri = new URL(Constants.hub);
 				return driver = new RemoteWebDriver(uri, c);
-			} catch (Exception e) {
-				System.out.println("Object-Run1 > Error: " + e);
 			}
-		}
+			} catch (MalformedURLException e) {
+				System.out.println("Error on WebDriver Chrome :"+e.getMessage());
+			}
 
-		if (brw.equals(co.browser_f)) {
-			try {
-				System.out.println("@@@@ Set-up browser <" + brw + "> for automation");
-				FirefoxOptions f = new FirefoxOptions();
-				f.setCapability(CapabilityType.BROWSER_NAME, brw);
-				f.setBinary(co.path_browser_f);
-				f.setHeadless(co.is_headless);
-				URL uri = new URL(co.hub);
-				return driver = new RemoteWebDriver(uri, f);
-			} catch (Exception e) {
-				System.out.println("Object-run2 > Error: " + e);
-			}
+	try {	
+		if (brw.equals("firefox")) {
+			System.out.println("Start WebDriver Firefox: "+Thread.currentThread().getId());
+			FirefoxOptions f = new FirefoxOptions();
+			f.setCapability(CapabilityType.BROWSER_NAME, brw);
+			f.setBinary(Constants.path_browser_f);
+			f.setHeadless(Constants.is_headless);
+			URL uri = new URL(Constants.hub);
+			return driver = new RemoteWebDriver(uri, f);
 		}
+	} catch (MalformedURLException e) {
+		System.out.println("Error on WebDriver Firefox :"+e.getMessage());
+	}	
+		
 		return driver;
 
 	}
@@ -63,7 +63,7 @@ public class Setup {
 
 		try {
 			
-			Thread.sleep(co.delay());
+			Thread.sleep(Constants.delay);
 			
 			WebElement dynamicElement;
 			switch (l) {
@@ -76,7 +76,7 @@ public class Setup {
 			
 			}
 
-			Thread.sleep(co.delay());
+			Thread.sleep(Constants.delay);
 
 			return dynamicElement;
 

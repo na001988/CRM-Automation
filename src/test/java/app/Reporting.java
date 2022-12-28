@@ -9,7 +9,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
-public class myReporting implements ITestListener{
+public class Reporting implements ITestListener{
 
 	ExtentReports report;
 	ExtentTest test;

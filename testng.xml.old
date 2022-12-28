@@ -17,5 +17,16 @@
 		</classes>
 	</test> <!-- Test -->
 
-	
+	<test name="Regression 2">
+		<classes>
+			<class name="app.Grid_Runner" />
+		</classes>
+	</test> <!-- Test -->
+
+	<test name="Regression 3">
+		<classes>
+			<class name="app.Grid_Runner" />
+		</classes>
+	</test> <!-- Test -->
+
 </suite> <!-- Suite -->

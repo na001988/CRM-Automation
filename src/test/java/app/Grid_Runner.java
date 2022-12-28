@@ -1,5 +1,7 @@
 package app;
 
+import java.net.MalformedURLException;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -8,21 +10,19 @@ import org.testng.annotations.Test;
 
 import pages.Dates;
 
-@Listeners(myReporting.class)
+@Listeners(Reporting.class)
 public class Grid_Runner {
 	
 	WebDriver driver_1;
     WebDriver driver_2;
-    Constants co = new Constants();
-    
     
   @BeforeClass(groups="start")
-   public void run1() throws InterruptedException{
+   public void run1() throws InterruptedException, MalformedURLException{
 	  
 	  Setup ob1 = new Setup(driver_1);
 	  Setup ob2 = new Setup(driver_2);
-	  driver_1 = ob1.run(co.base_uri,co.browser_f);
-	  driver_2 = ob2.run(co.base_uri,co.browser_c);
+	  //driver_1 = ob1.run(Constants.browser_f);
+	  driver_2 = ob2.run(Constants.browser_c);
   }
   
   @AfterClass(groups="end")
@@ -54,8 +54,8 @@ public class Grid_Runner {
 		  }
 		  
 	  System.out.println("Web Browser "+driver_2.toString()+ " started...." + Thread.currentThread().getId());
-	  driver_2.get(co.base_uri);
-	  Thread.sleep(co.delay());
+	  driver_2.get(Constants.base_uri);
+	  Thread.sleep(Constants.delay);
 	  //d.run_page_1();
 	  System.out.println(driver_2.getTitle());
 	  }catch(Exception e) {
@@ -74,8 +74,8 @@ public class Grid_Runner {
 			System.out.println("driver is null for : firefox"); 
 		  }
 		  System.out.println("Web Browser "+driver_1.toString()+ " started...." + Thread.currentThread().getId());
-	  driver_1.get(co.base_uri);
-	  Thread.sleep(co.delay()+500);
+	  driver_1.get(Constants.base_uri);
+	  Thread.sleep(Constants.delay+500);
 	  //d.run_page_1();
 	  System.out.println(driver_1.getTitle());
 	  }catch(Exception e) {

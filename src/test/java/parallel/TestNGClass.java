@@ -1,7 +1,7 @@
-package app;
+package parallel;
 
-import org.testng.annotations.Listeners;
-import com.aventstack.extentreports.testng.listener.ExtentITestListenerClassAdapter;
+import org.testng.annotations.DataProvider;
+import app.Constants;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
@@ -11,7 +11,13 @@ import io.cucumber.testng.CucumberOptions;
 		glue = {Constants.glue}
 		)
 
-@Listeners(ExtentITestListenerClassAdapter.class)
+//@Listeners(ExtentITestListenerClassAdapter.class)
 public class TestNGClass extends AbstractTestNGCucumberTests{
+	
+	@Override
+	@DataProvider(parallel=true)
+	public Object [][] scenarios(){
+	return super.scenarios();
+	}
 
 }
