@@ -1,7 +1,12 @@
 package app;
 
+import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Map;
+import java.util.TreeMap;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -14,6 +19,9 @@ public class Reporting implements ITestListener{
 
 	ExtentReports report;
 	static ExtentTest test;
+	ProcessWithExcel re = new ProcessWithExcel();
+	Map<String, Object[]> testData = new TreeMap<String, Object[]>();
+	LocalDate myObj = LocalDate.now();
 	
 	public void onStart(ITestContext context) {
 		 
@@ -32,7 +40,18 @@ public class Reporting implements ITestListener{
 	
 	public void onTestSuccess(ITestResult result) {
 		String paramName = Arrays.asList(result.getParameters()).toString();
-		test.pass(paramName + " > is passed ");
+		String d2 = result.getName();
+		String d1 = myObj.toString();
+		test.pass("Scenario: " +paramName + " > is passed ");
+
+		try {
+			re.run(paramName, d1, d2);
+		} catch (InvalidFormatException | IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("@@@@@@ Error onTestSuccess");
+			e.printStackTrace();
+		}
+		
 	}
 
 	
@@ -42,6 +61,8 @@ public class Reporting implements ITestListener{
 	
 	public void onFinish(ITestContext context) {
 		report.flush();
+		
+
 	}
 
 }

@@ -13,6 +13,7 @@ public class Constants {
 	public static final String glue = "parallel";
 	public static final String tags = "@sit";
 	public static final String features = "testcases/parallel";
+	public static final String excelFile = "\\OutputData.xlsx";
 	
 
 	public String data(String x) {
