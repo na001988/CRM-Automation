@@ -22,8 +22,12 @@ public class ProcessWithExcel {
         String excelFilePath = currentPath+Constants.excelFile;
         
         try {
+<<<<<<< HEAD
         	
           if(c.writeFile) {
+=======
+          
+>>>>>>> 255ebd64c353e6e34dadc4f3fae559dfc26dafa3
 			 FileInputStream myxls = new FileInputStream(excelFilePath);
 			 XSSFWorkbook studentsSheet = new XSSFWorkbook(myxls);
 			 XSSFSheet worksheet = studentsSheet.getSheetAt(0);
@@ -40,8 +44,12 @@ public class ProcessWithExcel {
 		       studentsSheet.write(output_file);
 		       output_file.close();
 		       System.out.println(" File successfully written");
+<<<<<<< HEAD
           }
           
+=======
+
+>>>>>>> 255ebd64c353e6e34dadc4f3fae559dfc26dafa3
 		}catch(FileNotFoundException e) {
 			System.out.println("Error on ProcessWithExcel.run()" + e.getMessage());
 			}
@@ -52,4 +60,7 @@ public class ProcessWithExcel {
 
 	
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 255ebd64c353e6e34dadc4f3fae559dfc26dafa3

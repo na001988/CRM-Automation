@@ -45,9 +45,16 @@ public class Reporting implements ITestListener{
 		test.pass("Scenario: " +paramName + " > is passed ");
 
 		try {
+<<<<<<< HEAD
 			re.run(paramName, d1, "Step Passed");
 		} catch (InvalidFormatException | IOException e) {
 			System.out.println("@@@@@@ Error | onTestSuccess | ProcessWithExcel.java");
+=======
+			re.run(paramName, d1, d2);
+		} catch (InvalidFormatException | IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("@@@@@@ Error onTestSuccess");
+>>>>>>> 255ebd64c353e6e34dadc4f3fae559dfc26dafa3
 			e.printStackTrace();
 		}
 		
@@ -73,6 +80,10 @@ public class Reporting implements ITestListener{
 	
 	public void onFinish(ITestContext context) {
 		report.flush();
+<<<<<<< HEAD
+=======
+		
+>>>>>>> 255ebd64c353e6e34dadc4f3fae559dfc26dafa3
 
 	}
 
