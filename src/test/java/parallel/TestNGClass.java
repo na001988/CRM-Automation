@@ -12,23 +12,27 @@ import io.cucumber.testng.CucumberOptions;
 		tags = (Constants.tags),
 		features = {Constants.features},
 		glue = {Constants.glue}
-		//plugin = {"pretty", "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
-		//		"timeline:test-output-thread/"}
 		)
 
 //build report myCustomExtent.html
 @Listeners(Reporting.class)
 
 //build report Spark.html
-//this listener do not support parallel execution with data provider. Must be a way !!!
+//this listener do not support @DataProvider with parallel=true
 //@Listeners(ExtentITestListenerClassAdapter.class)
 
 public class TestNGClass extends AbstractTestNGCucumberTests{
 	
+	//there is an issue while running @DataProvider=true, the actions of remotewebdriver are performed in the first instance of the browser only.
+	//few options to solve this issue was performed, from maven update versions, to adding settings in pom.xml
+	//but the same outcome was recorded.
+	//the option is to try, another way to run parallel testing for cucumber without @DataProvider.
+	
 	@Override
-	@DataProvider(parallel=true)
+	@DataProvider(parallel=false)
 	public Object [][] scenarios(){
 	return super.scenarios();
 	}
+	
 	
 }

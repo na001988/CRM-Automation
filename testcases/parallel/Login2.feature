@@ -1,5 +1,5 @@
 
-@sit
+@SIT
 Feature: Access to the CRM Application
   I want to provide valid credentials and enter to the system under test.
 

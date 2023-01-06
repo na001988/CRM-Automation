@@ -1,5 +1,5 @@
 
-@sit
+@SIT
 Feature: Access to the CRM Application
   I want to provide valid credentials and enter to the system under test.
 
@@ -9,7 +9,5 @@ Feature: Access to the CRM Application
     Then I can see the main page of the system 
 
 
-  Scenario: B - Verify a user can login to the system
-    And press the login_button
-    Then I can see the main page of the system 
+
 

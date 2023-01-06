@@ -27,7 +27,7 @@ public class Setup {
 	public Setup(WebDriver driver) {
 		this.driver = driver;
 	}
-
+	
 	public WebDriver run(String brw) throws InterruptedException, MalformedURLException {
 		try {
 			if (brw.equals("chrome")) {
@@ -35,10 +35,13 @@ public class Setup {
 				ChromeOptions c = new ChromeOptions();
 				c.setHeadless(Constants.is_headless);
 				URL uri = new URL(Constants.hub);
-				return driver = new RemoteWebDriver(uri, c);
+				driver = new RemoteWebDriver(uri, c);
+				System.out.println("Setup > "+driver.hashCode());
+				return driver;
 			}
 			} catch (MalformedURLException e) {
 				System.out.println("Error on WebDriver Chrome :"+e.getMessage());
+				
 			}
 
 	try {	
@@ -82,7 +85,7 @@ public class Setup {
 
 		} catch (StaleElementReferenceException | ElementNotInteractableException | NoSuchElementException | UnhandledAlertException ex) {
 			System.out.println("Error on locateWebElement() > " + ex.getMessage());
-			return locateWebElement(driver, l, info);
+			return null;
 		}
 	}
 
