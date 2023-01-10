@@ -64,7 +64,7 @@ public class Reporting implements ITestListener{
 		test.fail(paramName+" > is failed ");
 		
 		try {
-			re.run(paramName, d1, error);
+			re.run(paramName, d1, error.substring(0,40));
 		} catch (InvalidFormatException | IOException e) {
 			System.out.println("@@@@@@ Error | onTestFailure | ProcessWithExcel.java");
 			e.printStackTrace();

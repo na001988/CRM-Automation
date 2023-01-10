@@ -14,8 +14,6 @@ public class ProcessWithExcel {
 	
 	//it is required a maven dependency > Apache POI 3.9
 	
-	Constants c = new Constants();
-	
 	public void run(String d1, String d2, String d3) throws InvalidFormatException, IOException {
 		
 		String currentPath = new java.io.File(".").getCanonicalPath();
@@ -23,7 +21,7 @@ public class ProcessWithExcel {
         
         try {
         	
-          if(c.writeFile) {
+          if(Constants.writeFile) {
 			 FileInputStream myxls = new FileInputStream(excelFilePath);
 			 XSSFWorkbook studentsSheet = new XSSFWorkbook(myxls);
 			 XSSFSheet worksheet = studentsSheet.getSheetAt(0);

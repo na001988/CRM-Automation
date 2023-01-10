@@ -1,8 +1,5 @@
 package app;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.NoSuchElementException;
@@ -10,11 +7,7 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Select;
 
 public class Setup {
@@ -22,27 +15,13 @@ public class Setup {
 	protected WebDriver driver;
 	protected WebElement label;
 	public LocatorType locator;
-	public long v_hilo = Thread.currentThread().getId();
 
 	public Setup(WebDriver driver) {
 		this.driver = driver;
 	}
 	
+/*	
 	public WebDriver run(String brw) throws InterruptedException, MalformedURLException {
-		try {
-			if (brw.equals("chrome")) {
-				System.out.println("Start WebDriver : "+brw+"|"+ v_hilo);
-				ChromeOptions c = new ChromeOptions();
-				c.setHeadless(Constants.is_headless);
-				URL uri = new URL(Constants.hub);
-				driver = new RemoteWebDriver(uri, c);
-				System.out.println("Setup > "+driver.hashCode());
-				return driver;
-			}
-			} catch (MalformedURLException e) {
-				System.out.println("Error on WebDriver Chrome :"+e.getMessage());
-				
-			}
 
 	try {	
 		if (brw.equals("firefox")) {
@@ -62,6 +41,7 @@ public class Setup {
 
 	}
 
+*/
 	public WebElement locateWebElement(WebDriver obj, LocatorType l, String info) throws InterruptedException {
 
 		try {
