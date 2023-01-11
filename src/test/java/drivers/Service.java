@@ -2,7 +2,7 @@ package drivers;
 
 import org.openqa.selenium.WebDriver;
 
-public interface ServiceWebDriver {
+public interface Service {
 	
 	WebDriver getWebDriver();
 

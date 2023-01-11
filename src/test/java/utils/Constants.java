@@ -4,7 +4,7 @@ public class Constants {
 	
 	public static int delay = 500;
 	public static boolean is_headless = false;
-	public static boolean writeFile = false;
+	public static boolean writeFile = true;
 	public static final String browser_c = "chrome";
 	public static final String base_uri="http://caprivihealthcareresearch2.itdp.com.au";
 	public static String user = "48521";
@@ -14,7 +14,7 @@ public class Constants {
 	public static final String glue = "Steps";
 	public static final String tags = "@SIT";
 	public static final String features = "testcases";
-	public static final String excelFile = "\\OutputData.xlsx";
+	public static final String excelFile = "\\OutputData-TestCases.xlsx";
 	
 
 	public String data(String x) {

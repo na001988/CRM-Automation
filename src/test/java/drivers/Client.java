@@ -1,10 +1,10 @@
 package drivers;
 
-public class ClientChrome implements ClientWebDriver{
+public class Client implements ClientWebDriver{
 
-	ServiceWebDriver wd;
+	Service wd;
 	
-	public ClientChrome(ServiceWebDriver wd) {
+	public Client(Service wd) {
 		this.wd = wd;
 	}
 	
@@ -23,7 +23,7 @@ public class ClientChrome implements ClientWebDriver{
 	}
 	
 	
-	public void setServiceWd(ServiceWebDriver mwd) {
+	public void setServiceWd(Service mwd) {
 		this.wd = mwd;
 		
 	}

@@ -4,10 +4,10 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 
-import drivers.ClientChrome;
+import drivers.Client;
 import drivers.ClientWebDriver;
 import drivers.ServiceChrome;
-import drivers.ServiceWebDriver;
+import drivers.Service;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.And;
@@ -27,10 +27,10 @@ public class Login {
 	@BeforeAll
 	public static void before_all() throws Exception  {
 		
-		ServiceWebDriver swd = new ServiceChrome();
-		ClientWebDriver cl = new ClientChrome(swd);
+		Service swd = new ServiceChrome();
+		ClientWebDriver cl = new Client(swd);
 		cl.create_Session();
-		((ClientChrome) cl).setServiceWd(swd);
+		((Client) cl).setServiceWd(swd);
 		
 		System.out.println("#######Login");
 	}
@@ -38,7 +38,7 @@ public class Login {
 	public static WebDriver getDriver() {
 
 		WebDriver mwd = null;
-		ServiceWebDriver swd = new ServiceChrome();
+		Service swd = new ServiceChrome();
 		try {
 		mwd = swd.getWebDriver(); 
 		}catch(Exception e) {

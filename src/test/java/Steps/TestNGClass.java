@@ -17,7 +17,7 @@ import utils.Reporting;
 //build report myCustomExtent.html
 @Listeners(Reporting.class)
 
-//build report Spark.html
+//build report Spark.html (to-do)
 //this listener do not support @DataProvider with parallel=true
 //error: the return value of "java.lang.ThreadLocal.get()" is null
 //@Listeners(ExtentITestListenerClassAdapter.class)
@@ -25,7 +25,7 @@ import utils.Reporting;
 public class TestNGClass extends AbstractTestNGCucumberTests{
 	
 	@Override
-	@DataProvider(parallel=true)
+	@DataProvider(parallel=false)
 	public Object [][] scenarios(){
 	return super.scenarios();
 	}

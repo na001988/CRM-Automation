@@ -10,7 +10,8 @@ import org.openqa.selenium.remote.SessionId;
 
 import utils.Constants;
 
-public class ServiceChrome implements ServiceWebDriver{
+
+public class ServiceChrome implements Service{
 	
 	protected static ThreadLocal<WebDriver>threadLocalDriver = new ThreadLocal<>();
 	
