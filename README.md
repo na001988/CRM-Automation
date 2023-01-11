@@ -7,11 +7,12 @@ And, producing test reports using listeners for, spark, sure-fire and custom Ext
 
 There are few ways to run parallel testing with Cucumber, and each one has a particular configuration with diferent goals and limitations as well. For instance:
 
-1.- WebDriver with Junit
+1.- WebDriver with Junit (https://cucumber.io/docs/guides/parallel-execution)
 2.- RemoteWebDriver with Junit
-3.- WebDriver with TestNG and maven
+3.- WebDriver with TestNG and maven, set dataprovider with parallel = tue, scenarios will run in multiple threads. 
 4.- RemoteWebDriver with TestNG, maven and cucumber-jvm-parallel-plugin (https://github.com/cucumber/cucumber-jvm)
 5.- RemoteWebDriver with TestNG, dataprovider, AbstractTestNGCucumberTests
+
  
 This project will use option number 5, the RemoteWebDriver will create a remote session per each scenario in each feature file.
 The RemoteWebDriver will run under a grid server configuration with selenium-server-standalone.

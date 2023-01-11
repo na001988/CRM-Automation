@@ -1,8 +1,8 @@
-package app;
+package utils;
 
 public class Constants {
 	
-	public static int delay = 800;
+	public static int delay = 500;
 	public static boolean is_headless = false;
 	public static boolean writeFile = false;
 	public static final String browser_c = "chrome";
@@ -11,9 +11,9 @@ public class Constants {
 	public static String pass = "demo001";
 	public static String hub = "http://localhost:4444/wd/hub";
 	public static String path_browser_f = "C:\\Program Files\\Mozilla Firefox\\firefox.exe";
-	public static final String glue = "parallel";
+	public static final String glue = "Steps";
 	public static final String tags = "@SIT";
-	public static final String features = "testcases/parallel";
+	public static final String features = "testcases";
 	public static final String excelFile = "\\OutputData.xlsx";
 	
 

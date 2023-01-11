@@ -1,4 +1,4 @@
-package app;
+package utils;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotInteractableException;

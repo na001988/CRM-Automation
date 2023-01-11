@@ -1,4 +1,4 @@
-package app;
+package drivers;
 
 public interface ClientWebDriver {
 

@@ -1,24 +1,25 @@
-package parallel;
+package Steps;
 
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 
-import app.ClientChrome;
-import app.ClientWebDriver;
-import app.Constants;
-import app.ServiceChrome;
-import app.ServiceWebDriver;
-import app.Setup;
-import app.Setup.LocatorType;
-import app.Setup.WebDriverAction;
+import drivers.ClientChrome;
+import drivers.ClientWebDriver;
+import drivers.ServiceChrome;
+import drivers.ServiceWebDriver;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import utils.Constants;
+import utils.Setup;
+import utils.Setup.LocatorType;
+import utils.Setup.WebDriverAction;
 
 public class Login {
+	
 	
 	Setup setup = new Setup(getDriver());
 
@@ -29,13 +30,14 @@ public class Login {
 		ServiceWebDriver swd = new ServiceChrome();
 		ClientWebDriver cl = new ClientChrome(swd);
 		cl.create_Session();
+		((ClientChrome) cl).setServiceWd(swd);
 		
 		System.out.println("#######Login");
 	}
 
 	public static WebDriver getDriver() {
 
-		WebDriver mwd=null;
+		WebDriver mwd = null;
 		ServiceWebDriver swd = new ServiceChrome();
 		try {
 		mwd = swd.getWebDriver(); 
@@ -48,13 +50,13 @@ public class Login {
 	//Cucumber hook after all
 	@AfterAll
 	public static void after_all() throws InterruptedException {
-		
+
 		ServiceChrome swd = new ServiceChrome();
 		System.out.println("@@@@@@@@Close WebDriver: "+Constants.browser_c+" | "+ Thread.currentThread().getId());
 		WebDriver mwd=getDriver();
 		mwd.quit();
 		swd.removeWebDriver();
-		// how to close session by id ?
+		
 	}
 	
 	@Given("I enter a user_name and a password")
@@ -66,8 +68,8 @@ public class Login {
 		
 			//call dynamic function to find WebElements and perform actions 
 		setup.find_do("//button[@class='nav-login btn btn-outline-dark']", "", WebDriverAction.CLICK, LocatorType.XPATH);
-		//s.find_do("login_user", Constants.user, WebDriverAction.SETTEXT, LocatorType.ID);
-		//s.find_do("login_pass", Constants.pass, WebDriverAction.SETTEXT, LocatorType.ID);
+		setup.find_do("l_username", Constants.user, WebDriverAction.SETTEXT, LocatorType.ID);
+		setup.find_do("t_l_password", Constants.pass, WebDriverAction.SETTEXT, LocatorType.ID);
 		}catch(Exception e) {
 			throw new Exception("Falied-Step: "+"i_enter_a_user_name_and_a_password()");
 		}
