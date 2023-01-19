@@ -43,6 +43,8 @@ public class Reporting implements ITestListener{
 		String d2 = result.getName();
 		String d1 = myObj.toString();
 		test.pass("Scenario: " +paramName + " > is passed ");
+		
+		System.out.println("paramName: "+paramName);
 
 		try {
 			re.run(paramName, d1, d2);

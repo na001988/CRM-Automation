@@ -2,11 +2,11 @@ package utils;
 
 public class Constants {
 	
-	public static int delay = 500;
+	public static int delay = 250;
 	public static boolean is_headless = false;
-	public static boolean writeFile = true;
+	public static boolean writeFile = false;
 	public static final String browser_c = "chrome";
-	public static final String base_uri="http://caprivihealthcareresearch2.itdp.com.au";
+	public static final String base_uri="http://caprivihealthcareresearch2.itdp.com.au/";
 	public static String user = "48521";
 	public static String pass = "demo001";
 	public static String hub = "http://localhost:4444/wd/hub";

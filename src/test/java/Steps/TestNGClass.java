@@ -25,7 +25,7 @@ import utils.Reporting;
 public class TestNGClass extends AbstractTestNGCucumberTests{
 	
 	@Override
-	@DataProvider(parallel=false)
+	@DataProvider(parallel=true)
 	public Object [][] scenarios(){
 	return super.scenarios();
 	}

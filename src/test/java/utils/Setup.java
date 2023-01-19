@@ -10,6 +10,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
+import drivers.Client;
+import drivers.ClientWebDriver;
+import drivers.Service;
+import drivers.ServiceChrome;
+
 public class Setup {
 
 	protected WebDriver driver;
@@ -19,6 +24,30 @@ public class Setup {
 	public Setup(WebDriver driver) {
 		this.driver = driver;
 	}
+	
+	public static WebDriver ManageDriver(String browser) {
+		
+		WebDriver mwd = null;
+		
+		if(browser.equals("chrome")) {
+			
+			Service swd = new ServiceChrome();
+			ClientWebDriver cl = new Client(swd);
+			cl.create_Session();
+			((Client) cl).setServiceWd(swd);
+			mwd = swd.getWebDriver();
+			
+		}else if(browser.equals("firefox")) {
+			//add here logic to manage firefox
+		}
+		try {
+		 
+		}catch(Exception e) {
+			System.out.println("On > WebDriver getDriver() > "+e.getMessage());
+		}
+		return mwd; 
+	}
+	
 	
 /*	
 	public WebDriver run(String brw) throws InterruptedException, MalformedURLException {
