@@ -32,8 +32,12 @@ public class Login {
 	public static void after_all() throws InterruptedException {
 		ServiceChrome swd = new ServiceChrome();
 		System.out.println("@@@@@@@@Close WebDriver: "+Constants.browser_c+" | "+ Thread.currentThread().getId());
+		try {
 		getDriver().quit();
 		swd.removeWebDriver();
+		}catch(Exception e) {
+			System.out.println("@@@@@@@@Issue while Closing WebDriver");
+		}
 	}
 	
 	@Given("I enter a user_name and a password")

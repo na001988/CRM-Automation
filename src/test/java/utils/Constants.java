@@ -4,7 +4,7 @@ public class Constants {
 	
 	public static int delay = 250;
 	public static boolean is_headless = false;
-	public static boolean writeFile = false;
+	public static boolean writeFile = true;
 	public static final String browser_c = "chrome";
 	public static final String base_uri="http://caprivihealthcareresearch2.itdp.com.au/";
 	public static String user = "48521";
